@@ -1,0 +1,330 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{0DAC4030-CDC1-4E7E-BC1A-B355E7C30A25}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>USGData</RootNamespace>
+    <AssemblyName>USGData</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.ApplicationBlocks.Data, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationBlocks.Data.2.0.0\lib\net45\Microsoft.ApplicationBlocks.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Azure.KeyVault.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Azure.KeyVault.Core.1.0.0\lib\net40\Microsoft.Azure.KeyVault.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAzure.Storage, Version=9.3.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\WindowsAzure.Storage.9.3.3\lib\net45\Microsoft.WindowsAzure.Storage.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.10.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Administrator.cs" />
+    <Compile Include="AdminLog.cs" />
+    <Compile Include="AdminLogType.cs" />
+    <Compile Include="ChangeType.cs" />
+    <Compile Include="CompanyLevel.cs" />
+    <Compile Include="Conversion.cs" />
+    <Compile Include="Customer.cs" />
+    <Compile Include="CustomerSignType.cs" />
+    <Compile Include="CustomerSignTypeGroup.cs" />
+    <Compile Include="CustomerStatusType.cs" />
+    <Compile Include="CustomerUser.cs" />
+    <Compile Include="CustomerUserType.cs" />
+    <Compile Include="Data\Administrator.cs" />
+    <Compile Include="Data\AdminLog.cs" />
+    <Compile Include="Data\AdminLogType.cs" />
+    <Compile Include="Data\ChangeType.cs" />
+    <Compile Include="Data\CompanyLevel.cs" />
+    <Compile Include="Data\Customer.cs" />
+    <Compile Include="Data\CustomerSignType.cs" />
+    <Compile Include="Data\CustomerSignTypeGroup.cs" />
+    <Compile Include="Data\CustomerStatusType.cs" />
+    <Compile Include="Data\CustomerUser.cs" />
+    <Compile Include="Data\CustomerUserType.cs" />
+    <Compile Include="Data\DNNRoles .cs" />
+    <Compile Include="Data\DNNUsers .cs" />
+    <Compile Include="Data\FileType.cs" />
+    <Compile Include="Data\FinishingItem.cs" />
+    <Compile Include="Data\HardwareItem.cs" />
+    <Compile Include="Data\InventoryItem.cs" />
+    <Compile Include="Data\InventoryOrder.cs" />
+    <Compile Include="Data\InventoryOrderItem.cs" />
+    <Compile Include="Data\Invoice.cs" />
+    <Compile Include="Data\InvoicePayment.cs" />
+    <Compile Include="Data\Job.cs" />
+    <Compile Include="Data\JobOrder.cs" />
+    <Compile Include="Data\JobOrderPromo.cs" />
+    <Compile Include="Data\JobOrderPromoStore.cs" />
+    <Compile Include="Data\JobType.cs" />
+    <Compile Include="Data\Laminant.cs" />
+    <Compile Include="Data\LaminationType.cs" />
+    <Compile Include="Data\Layout.cs" />
+    <Compile Include="Data\LayoutNote.cs" />
+    <Compile Include="Data\LayoutSenderType.cs" />
+    <Compile Include="Data\LayoutStatusType.cs" />
+    <Compile Include="Data\MaterialItem.cs" />
+    <Compile Include="Data\Measurement.cs" />
+    <Compile Include="Data\Mockup.cs" />
+    <Compile Include="Data\MockupNote.cs" />
+    <Compile Include="Data\MockupNoteType.cs" />
+    <Compile Include="Data\Notification.cs" />
+    <Compile Include="Data\NotificationType.cs" />
+    <Compile Include="Data\Order.cs" />
+    <Compile Include="Data\OrderedItem.cs" />
+    <Compile Include="Data\PermissionRole.cs" />
+    <Compile Include="Data\Preset.cs" />
+    <Compile Include="Data\PresetStore.cs" />
+    <Compile Include="Data\PrintingJob.cs" />
+    <Compile Include="Data\Project.cs" />
+    <Compile Include="Data\ProjectFile.cs" />
+    <Compile Include="Data\PurchaseOrder.cs" />
+    <Compile Include="Data\PurchaseOrderItem.cs" />
+    <Compile Include="Data\QuoteRequest.cs" />
+    <Compile Include="Data\QuoteRequestItem.cs" />
+    <Compile Include="Data\ShippingType.cs" />
+    <Compile Include="Data\ShipToStoreNumber.cs" />
+    <Compile Include="Data\SignType.cs" />
+    <Compile Include="Data\SignTypeSize.cs" />
+    <Compile Include="Data\Store.cs" />
+    <Compile Include="Data\StoreCompanyLevel.cs" />
+    <Compile Include="Data\StoreSignType.cs" />
+    <Compile Include="Data\StoreTag.cs" />
+    <Compile Include="Data\Substrate.cs" />
+    <Compile Include="Data\SubstrateVendor.cs" />
+    <Compile Include="Data\Tag.cs" />
+    <Compile Include="Data\Term.cs" />
+    <Compile Include="Data\Vendor.cs" />
+    <Compile Include="Data\_Administrator.cs" />
+    <Compile Include="Data\_AdminLog.cs" />
+    <Compile Include="Data\_AdminLogType.cs" />
+    <Compile Include="Data\_ChangeType.cs" />
+    <Compile Include="Data\_CompanyLevel.cs" />
+    <Compile Include="Data\_Customer.cs" />
+    <Compile Include="Data\_CustomerSignType.cs" />
+    <Compile Include="Data\_CustomerSignTypeGroup.cs" />
+    <Compile Include="Data\_CustomerStatusType.cs" />
+    <Compile Include="Data\_CustomerUser.cs" />
+    <Compile Include="Data\_CustomerUserType.cs" />
+    <Compile Include="Data\_FileType.cs" />
+    <Compile Include="Data\_FinishingItem.cs" />
+    <Compile Include="Data\_HardwareItem.cs" />
+    <Compile Include="Data\_InventoryItem.cs" />
+    <Compile Include="Data\_InventoryOrder.cs" />
+    <Compile Include="Data\_InventoryOrderItem.cs" />
+    <Compile Include="Data\_Invoice.cs" />
+    <Compile Include="Data\_InvoicePayment.cs" />
+    <Compile Include="Data\_Job.cs" />
+    <Compile Include="Data\_JobOrder.cs" />
+    <Compile Include="Data\_JobOrderPromo.cs" />
+    <Compile Include="Data\_JobOrderPromoStore.cs" />
+    <Compile Include="Data\_JobType.cs" />
+    <Compile Include="Data\_Laminant.cs" />
+    <Compile Include="Data\_LaminationType.cs" />
+    <Compile Include="Data\_Layout.cs" />
+    <Compile Include="Data\_LayoutNote.cs" />
+    <Compile Include="Data\_LayoutSenderType.cs" />
+    <Compile Include="Data\_LayoutStatusType.cs" />
+    <Compile Include="Data\_MaterialItem.cs" />
+    <Compile Include="Data\_Measurement.cs" />
+    <Compile Include="Data\_Mockup.cs" />
+    <Compile Include="Data\_MockupNote.cs" />
+    <Compile Include="Data\_MockupNoteType.cs" />
+    <Compile Include="Data\_Notification.cs" />
+    <Compile Include="Data\_NotificationType.cs" />
+    <Compile Include="Data\_Order.cs" />
+    <Compile Include="Data\_OrderedItem.cs" />
+    <Compile Include="Data\_PermissionRole.cs" />
+    <Compile Include="Data\_Preset.cs" />
+    <Compile Include="Data\_PresetStore.cs" />
+    <Compile Include="Data\_PrintingJob.cs" />
+    <Compile Include="Data\_Project.cs" />
+    <Compile Include="Data\_ProjectFile.cs" />
+    <Compile Include="Data\_PurchaseOrder.cs" />
+    <Compile Include="Data\_PurchaseOrderItem.cs" />
+    <Compile Include="Data\_QuoteRequest.cs" />
+    <Compile Include="Data\_QuoteRequestItem.cs" />
+    <Compile Include="Data\_ShippingType.cs" />
+    <Compile Include="Data\_ShipToStoreNumber.cs" />
+    <Compile Include="Data\_SignType.cs" />
+    <Compile Include="Data\_SignTypeSize.cs" />
+    <Compile Include="Data\_Store.cs" />
+    <Compile Include="Data\_StoreCompanyLevel.cs" />
+    <Compile Include="Data\_StoreSignType.cs" />
+    <Compile Include="Data\_StoreTag.cs" />
+    <Compile Include="Data\_Substrate.cs" />
+    <Compile Include="Data\_SubstrateVendor.cs" />
+    <Compile Include="Data\_Tag.cs" />
+    <Compile Include="Data\_Term.cs" />
+    <Compile Include="Data\_Vendor.cs" />
+    <Compile Include="DNNRoles .cs" />
+    <Compile Include="DNNUsers .cs" />
+    <Compile Include="FileType.cs" />
+    <Compile Include="FinishingItem.cs" />
+    <Compile Include="HardwareItem.cs" />
+    <Compile Include="InventoryItem.cs" />
+    <Compile Include="InventoryOrder.cs" />
+    <Compile Include="InventoryOrderItem.cs" />
+    <Compile Include="Invoice.cs" />
+    <Compile Include="InvoicePayment.cs" />
+    <Compile Include="Job.cs" />
+    <Compile Include="JobOrder.cs" />
+    <Compile Include="JobOrderPromo.cs" />
+    <Compile Include="JobOrderPromoStore.cs" />
+    <Compile Include="JobType.cs" />
+    <Compile Include="Laminant.cs" />
+    <Compile Include="LaminationType.cs" />
+    <Compile Include="Layout.cs" />
+    <Compile Include="LayoutNote.cs" />
+    <Compile Include="LayoutSenderType.cs" />
+    <Compile Include="LayoutStatusType.cs" />
+    <Compile Include="MaterialItem.cs" />
+    <Compile Include="Measurement.cs" />
+    <Compile Include="Mockup.cs" />
+    <Compile Include="MockupNote.cs" />
+    <Compile Include="MockupNoteType.cs" />
+    <Compile Include="Notification.cs" />
+    <Compile Include="NotificationType.cs" />
+    <Compile Include="Order.cs" />
+    <Compile Include="OrderedItem.cs" />
+    <Compile Include="PermissionRole.cs" />
+    <Compile Include="Preset.cs" />
+    <Compile Include="PresetStore.cs" />
+    <Compile Include="PrintingJob.cs" />
+    <Compile Include="Project.cs" />
+    <Compile Include="ProjectFile.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="PurchaseOrder.cs" />
+    <Compile Include="PurchaseOrderItem.cs" />
+    <Compile Include="QuoteRequest.cs" />
+    <Compile Include="QuoteRequestItem.cs" />
+    <Compile Include="ShippingType.cs" />
+    <Compile Include="ShipToStoreNumber.cs" />
+    <Compile Include="SignType.cs" />
+    <Compile Include="SignTypeSize.cs" />
+    <Compile Include="SqlNullHelper.cs" />
+    <Compile Include="Store.cs" />
+    <Compile Include="StoreCompanyLevel.cs" />
+    <Compile Include="StoreSignType.cs" />
+    <Compile Include="StoreTag.cs" />
+    <Compile Include="Substrate.cs" />
+    <Compile Include="SubstrateVendor.cs" />
+    <Compile Include="Tag.cs" />
+    <Compile Include="Term.cs" />
+    <Compile Include="Vendor.cs" />
+    <Compile Include="_Administrator.cs" />
+    <Compile Include="_AdminLog.cs" />
+    <Compile Include="_AdminLogType.cs" />
+    <Compile Include="_ChangeType.cs" />
+    <Compile Include="_CompanyLevel.cs" />
+    <Compile Include="_Customer.cs" />
+    <Compile Include="_CustomerSignType.cs" />
+    <Compile Include="_CustomerSignTypeGroup.cs" />
+    <Compile Include="_CustomerStatusType.cs" />
+    <Compile Include="_CustomerUser.cs" />
+    <Compile Include="_CustomerUserType.cs" />
+    <Compile Include="_FileType.cs" />
+    <Compile Include="_FinishingItem.cs" />
+    <Compile Include="_HardwareItem.cs" />
+    <Compile Include="_InventoryItem.cs" />
+    <Compile Include="_InventoryOrder.cs" />
+    <Compile Include="_InventoryOrderItem.cs" />
+    <Compile Include="_Invoice.cs" />
+    <Compile Include="_InvoicePayment.cs" />
+    <Compile Include="_Job.cs" />
+    <Compile Include="_JobOrder.cs" />
+    <Compile Include="_JobOrderPromo.cs" />
+    <Compile Include="_JobOrderPromoStore.cs" />
+    <Compile Include="_JobType.cs" />
+    <Compile Include="_Laminant.cs" />
+    <Compile Include="_LaminationType.cs" />
+    <Compile Include="_Layout.cs" />
+    <Compile Include="_LayoutNote.cs" />
+    <Compile Include="_LayoutSenderType.cs" />
+    <Compile Include="_LayoutStatusType.cs" />
+    <Compile Include="_MaterialItem.cs" />
+    <Compile Include="_Measurement.cs" />
+    <Compile Include="_Mockup.cs" />
+    <Compile Include="_MockupNote.cs" />
+    <Compile Include="_MockupNoteType.cs" />
+    <Compile Include="_Notification.cs" />
+    <Compile Include="_NotificationType.cs" />
+    <Compile Include="_Order.cs" />
+    <Compile Include="_OrderedItem.cs" />
+    <Compile Include="_PermissionRole.cs" />
+    <Compile Include="_Preset.cs" />
+    <Compile Include="_PresetStore.cs" />
+    <Compile Include="_PrintingJob.cs" />
+    <Compile Include="_Project.cs" />
+    <Compile Include="_ProjectFile.cs" />
+    <Compile Include="_PurchaseOrder.cs" />
+    <Compile Include="_PurchaseOrderItem.cs" />
+    <Compile Include="_QuoteRequest.cs" />
+    <Compile Include="_QuoteRequestItem.cs" />
+    <Compile Include="_ShippingType.cs" />
+    <Compile Include="_ShipToStoreNumber.cs" />
+    <Compile Include="_SignType.cs" />
+    <Compile Include="_SignTypeSize.cs" />
+    <Compile Include="_Store.cs" />
+    <Compile Include="_StoreCompanyLevel.cs" />
+    <Compile Include="_StoreSignType.cs" />
+    <Compile Include="_StoreTag.cs" />
+    <Compile Include="_Substrate.cs" />
+    <Compile Include="_SubstrateVendor.cs" />
+    <Compile Include="_Tag.cs" />
+    <Compile Include="_Term.cs" />
+    <Compile Include="_Vendor.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

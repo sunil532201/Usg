@@ -1,0 +1,158 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Main.master.cs" Inherits="USGClient.MasterPages.Main" %>
+
+<!DOCTYPE html>
+
+<html lang="en-us">
+<head runat="server">
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+    <title></title>
+    <link runat="server" id="lnkDefaultCSS" type="text/css" rel="stylesheet"/>
+	<link runat="server" id="lnkSearchSkinObjectPreviewCSS" type="text/css" rel="stylesheet"/>
+	<link runat="server" id="lnkPortalCSS" type="text/css" rel="stylesheet"/>
+	<link runat="server" id="lnkBaseCSS" type="text/css" rel="stylesheet"/>
+	<link runat="server" id="lnkThemeCSS" type="text/css" rel="stylesheet"/>
+	<script src='<%=System.Configuration.ConfigurationManager.AppSettings["BaseURL"] %>Resources/libraries/jQuery/03_02_01/jquery.js?cdv=347' type="text/javascript"></script>
+	<script src='<%=System.Configuration.ConfigurationManager.AppSettings["BaseURL"] %>Resources/libraries/jQuery-Migrate/03_00_00/jquery-migrate.js?cdv=347' type="text/javascript"></script>
+	<script src='<%=System.Configuration.ConfigurationManager.AppSettings["BaseURL"] %>Resources/libraries/jQuery-UI/01_12_01/jquery-ui.js?cdv=347' type="text/javascript"></script><!--[if IE 8 ]><script type="text/javascript">jQuery("html").addClass("ie ie8");</script><![endif]--><!--[if IE 9 ]><script type="text/javascript">jQuery("html").addClass("ie ie9");</script><![endif]--><!--[if IE]><link rel="stylesheet" type="text/css" href="/Portals/_default/skins/porto/Resources/css/ie.css" /><![endif]--><!--[if lte IE 8]><script src="/Portals/_default/skins/porto/Resources/js/respond.min.js"></script><script src="/Portals/_default/skins/porto/Resources/js/excanvas.min.js"></script><![endif]-->
+	<meta id="Porto_Viewport" name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1 user-scalable=0" />
+	<link runat="server" id="lnkFavicon" rel='SHORTCUT ICON' type='image/x-icon' />
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800%7CShadows+Into+Light" rel="stylesheet" type="text/css" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" type="text/css" rel="stylesheet" />
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <style>
+        ul#mainMenu i{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <form id="Form" runat="server">
+        <div class="body">
+            <header id="header">
+            	<div class="container">
+					<h1 class="logo">
+						<a id="dnn_LOGO1_hypLogo" title="Universal Screen Graphics" href='<%=System.Configuration.ConfigurationManager.AppSettings["BaseURL"] %>'><img id="dnn_LOGO1_imgLogo" src='<%=System.Configuration.ConfigurationManager.AppSettings["BaseURL"] %>Portals/[USG]/usflogoforweb2.png' alt="Universal Screen Graphics" /></a>
+					</h1>
+					<div class="language">
+						<div class="language-object" ></div>
+					</div>
+					<%--<button type="button" class="btn btn-responsive-nav btn-inverse" style="margin-top: 12px; display: none;" data-toggle="collapse" data-target=".nav-main-collapse">
+						<em class="fa fa-bars"></em>
+					</button>--%>
+				</div>
+				<div class="navbar-collapse nav-main-collapse collapse">
+					<div class="container">
+						<nav class="nav-main mega-menu">
+							<ul class="nav nav-pills nav-main" id="mainMenu">
+								<li data-col="" class="dropdown dropdown-full-color dropdown-primary"><a href='<%=System.Configuration.ConfigurationManager.AppSettings["BaseURL"] %>' class="dropdown-toggle">Home</a>
+									<ul class="dropdown-menu">
+										<li><a href='<%=System.Configuration.ConfigurationManager.AppSettings["BaseURL"] %>Home/About-USG'>About USG</a></li>
+										<li><a href='<%=System.Configuration.ConfigurationManager.AppSettings["BaseURL"] %>Home/Design-Services'>Design Services</a></li>
+										<li><a href='<%=System.Configuration.ConfigurationManager.AppSettings["BaseURL"] %>Home/Customer-Service'>Customer Service</a></li>
+										<li><a href='<%=System.Configuration.ConfigurationManager.AppSettings["BaseURL"] %>Home/Printing'>Printing</a></li>
+										<li><a href='<%=System.Configuration.ConfigurationManager.AppSettings["BaseURL"] %>Home/Store-Level-Shipping'>Store Level Shipping</a></li>
+								  </ul>
+								</li>
+								<li class=" dropdown-full-color dropdown-primary"><a href='<%=System.Configuration.ConfigurationManager.AppSettings["BaseURL"] %>Gallery'>Gallery</a></li>
+								<li class=" dropdown-full-color dropdown-primary"><a href='<%=System.Configuration.ConfigurationManager.AppSettings["BaseURL"] %>Team'>Team</a></li>
+								<li class=" dropdown-full-color dropdown-primary"><a href='<%=System.Configuration.ConfigurationManager.AppSettings["BaseURL"] %>Request-A-Quote'>Request A Quote</a></li>
+								<li class=" dropdown-full-color dropdown-primary"><a href='<%=System.Configuration.ConfigurationManager.AppSettings["BaseURL"] %>Contact-Us'>Contact Us</a></li>
+								<li class=" dropdown-full-color dropdown-primary"><a href='<%=System.Configuration.ConfigurationManager.AppSettings["BaseURL"] %>Client-Resources/FTP'>FTP</a></li>
+							</ul>
+						</nav>
+					</div>
+				</div>
+			</header>
+            <div role="main" class="main">
+                <section class="page-top basic">
+					<div class="page-top-info container">
+						<div class="row">
+							<div class="col-md-12">
+								<ul class="breadcrumb">
+                                    <li>
+                                        <asp:ContentPlaceHolder ID="cphBreadCrumbs" runat="server"></asp:ContentPlaceHolder>
+                                    </li>
+								</ul>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-8">
+								<asp:ContentPlaceHolder ID="cphPageTitle" runat="server"></asp:ContentPlaceHolder>
+							</div>
+                            <div class="col-md-4" style="text-align: right;">
+                                <asp:LinkButton runat="server" ID="lnkLogout" Text="LOGOUT" OnClick="lnkLogout_Click" ForeColor="White"></asp:LinkButton>
+                            </div>
+						</div>
+					</div>
+				</section>
+                <div class="container">
+					<div class="row">
+						<div class="col-md-12">
+							<div id="dnn_contentPane">
+								<div class="DnnModule DnnModule-DNN_HTML DnnModule-960">
+									<a name="960"></a>
+									<div id="dnn_ctr960_ContentPane">
+										<!-- Start_Module_960 -->
+										<div id="dnn_ctr960_ModuleContent" class="DNNModuleContent ModDNNHTMLC">
+											<div id="dnn_ctr960_HtmlModule_lblContent" class="Normal">
+                                                <asp:ContentPlaceHolder ID="cphMainContent" runat="server"></asp:ContentPlaceHolder>
+											</div>
+										</div>
+										<!-- End_Module_960 -->
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+            </div>
+            <footer id="footer">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-12">
+							<div id="dnn_FooterTop">
+								<div class="DnnModule DnnModule-DNN_HTML DnnModule-870">
+									<a name="870"></a>
+									<div id="dnn_ctr870_ContentPane">
+										<!-- Start_Module_870 -->
+										<div id="dnn_ctr870_ModuleContent" class="DNNModuleContent ModDNNHTMLC">
+											<div id="dnn_ctr870_HtmlModule_lblContent" class="Normal">
+												<p style="text-align: center;">
+													<img alt="Image Maker" src='<%=System.Configuration.ConfigurationManager.AppSettings["BaseURL"] %>Portals/%5BUSG%5D/img/Footer/Footer2.png' style="max-width:75%" title="Image Maker" />
+												</p>
+											</div>
+										</div>
+										<!-- End_Module_870 -->
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="footer-copyright">
+					<div class="container">
+						<div class="row">
+							<div class="col-md-12">
+								<span class="copyright">&copy;</span>
+								<span id="dnn_dnnCopyright_lblCopyright" class="copyright">Copyright 2001 - <%=DateTime.Now.Year %> by Universal Screen Graphics, Inc.</span>
+
+								<a id="dnn_dnnTerms_hypTerms" class="terms" rel="nofollow" href='<%=System.Configuration.ConfigurationManager.AppSettings["BaseURL"] %>Terms'>Terms Of Use</a>
+								<a id="dnn_dnnPrivacy_hypPrivacy" class="privacy" rel="nofollow" href='<%=System.Configuration.ConfigurationManager.AppSettings["BaseURL"] %>Privacy'>Privacy Statement</a>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</footer>
+        </div>
+        <!--CDF(Css|/Portals/_default/skins/porto/USGInner.theme.css?cdv=347)--><!--CDF(Javascript|/Portals/_default/skins/porto/USGInner.js?cdv=347)-->
+		<script type="text/javascript">
+            jQuery('#login').find('a').removeAttr('onclick');
+            jQuery('#login').children('a').removeAttr('onclick');
+		</script>
+		<script src='<%=System.Configuration.ConfigurationManager.AppSettings["BaseURL"] %>Portals/_default/skins/porto/USGInner.base.js?cdv=347' type="text/javascript"></script>
+		<script src='<%=System.Configuration.ConfigurationManager.AppSettings["BaseURL"] %>Portals/_default/skins/porto/USGInner.js?cdv=347' type="text/javascript"></script>
+    </form>
+</body>
+</html>

@@ -1,0 +1,350 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="AdminPage1.master.cs" Inherits="USGClient.MasterPages.AdminPage1" %>
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+ 
+    
+     <title>USG Admin Tool</title>
+      
+     <!-- Bootstrap core CSS-->
+    <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom fonts for this template-->
+    <link href="../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <!-- Page level plugin CSS-->
+    <link href="../vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
+    <!-- Custom styles for this template-->
+    <link href="../css/sb-admin.css" rel="stylesheet">
+
+    <!------------------------------ MileStone stylesheets Begins---------------------->
+    <!-- page stylesheets -->
+    <link rel="stylesheet" href="../Milestone/vendor/bower-jvectormap/jquery-jvectormap-1.2.2.css"/>
+    <!-- end page stylesheets -->
+    <!-- build:css({.tmp,app}) styles/app.min.css -->
+    <link rel="stylesheet" href="../Milestone/vendor/bootstrap/dist/css/bootstrap.css"/>
+    <link rel="stylesheet" href="../Milestone/vendor/pace/themes/blue/pace-theme-minimal.css"/>
+    <link rel="stylesheet" href="../Milestone/vendor/font-awesome/css/font-awesome.css"/>
+    <link rel="stylesheet" href="../Milestone/vendor/animate.css/animate.css"/>
+    <link rel="stylesheet" href="../Milestone/styles/app.css" id="load_styles_before"/>
+    <link rel="stylesheet" href="../Milestone/styles/app.skins.css"/>
+      <link href="../css/USG-CustomStyles.css" rel="stylesheet" />
+    <link href="../css/styleOverides.css" rel="stylesheet" />
+    <!-- endbuild -->
+
+        <asp:ContentPlaceHolder ID="head" runat="server"></asp:ContentPlaceHolder>
+  </head>
+  <body>
+      <form runat="server">
+
+<!-- Bootstrap -->
+    <script type="text/javascript" src='https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.3.min.js'></script>
+    <script type="text/javascript" src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.3/js/bootstrap.min.js'></script>
+<%--    <link rel="stylesheet" href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.3/css/bootstrap.min.css' media="screen" />--%>
+    <!-- Bootstrap -->
+
+
+    <div class="app fixed-header expanding">
+      <!--sidebar panel-->
+      <div class="off-canvas-overlay" data-toggle="sidebar"></div>
+      <div class="sidebar-panel bg-dark" >
+        <div class="brand bg-dark" >
+          <!-- toggle offscreen menu -->
+          <a href="javascript:;" data-toggle="sidebar" class="toggle-offscreen hidden-lg-up">
+            <i class="material-icons">menu</i>
+          </a>
+          <!-- /toggle offscreen menu -->
+          <!-- logo -->
+          <a class="brand-logo" href="clients.aspx">
+            <img class="expanding-hidden"  src="../Milestone/images/UsgLogo.png" alt=""/>
+          </a>
+          <!-- /logo -->
+        </div>
+        <div class="nav-profile dropdown">
+          <a href="javascript:;" class="dropdown-toggle color-white" data-toggle="dropdown"><div class="user-image"><img src="../Milestone/images/avatar.jpg" class="avatar img-circle" alt="user" title="user"/></div><div class="user-info expanding-hidden"><span class="color-white" id="selectedClient" runat="server"></span><span id="admin" runat="server" class="color-white bold" ></span></div></a>
+          <div class="dropdown-menu">
+            <a  class="dropdown-item" runat="server"  OnClick="ChangePassword" >Change Password</a>
+            <a  class="dropdown-item"  data-toggle="modal" data-target="#exampleModal" href="javascript:;">Logout</a>
+
+          </div>
+        </div>
+        <!-- main navigation -->
+        <nav>
+          <ul class="nav">
+               <li runat="server" id="liDashboard" visible="false"> 
+              <a href="AdminDashBoard.aspx">
+                <i class="material-icons text-info">dashboard</i>
+                <span style="color:#1cb8f3 !important">My Dashboard</span>
+              </a>
+            </li>
+              <hr style="background:#ffffff !important"/>
+            <li runat="server" id="liClients" visible="false"> 
+              <a href="clients.aspx">
+                <i class="material-icons text-success">people</i>
+                <span style="color:#75cb28 !important">Clients</span>
+              </a>
+            </li>
+            <li runat="server" id="liJobBook" visible="false">
+              <a href="Job.aspx">
+                <i class="material-icons text-success">assistant</i>
+                <span style="color:#75cb28 !important">Job Book</span>
+              </a>
+            </li>
+               <li runat="server" id="liInvoices" visible="false">
+              <a href="InvoicesMaintenance.aspx">
+                <i class="material-icons text-success">receipt</i>
+                <span style="color:#75cb28 !important">Invoice Maintenance</span>
+              </a>
+            </li>
+               <li runat="server" id="li1" visible="true">
+              <a href="InventoryOrder.aspx">
+                <i class="material-icons text-success">book</i>
+                <span style="color:#75cb28 !important">Inventory Orders</span>
+              </a>
+            </li>
+              <li runat="server" id="liStoreLevelOrders" visible="false">
+              <a href="StoreLevelOrders.aspx">
+                <i class="material-icons text-success">explore</i>
+                <span style="color:#75cb28 !important">Store Level Orders</span>
+              </a>
+            </li>
+              <hr style="background:#ffffff !important"/>
+
+                <!--SuperUser Login-->
+                    <%--<% if (Session["SuperUser"].ToString() == "True")
+                        {%>--%>
+            <li runat="server" id="liPurchaseOrder" visible="false">
+              <a href="PurchaseOrders.aspx">
+                <i class="material-icons text-yellow">subtitles</i>
+
+                <span style="color:#FFFF00 !important">Purchase Order</span>
+              </a>
+            </li>
+            <li runat="server" id="liSubstrates" visible="false">
+              <a href="Substrates.aspx">
+                <i class="material-icons text-yellow">assignment</i>
+
+                <span style="color:#FFFF00 !important">Substrates</span>
+              </a>
+            </li>
+            <li runat="server" id="liVendors" visible="false">
+              <a href="VendorList.aspx">
+                <i class="material-icons text-yellow">pages</i>
+
+                <span style="color:#FFFF00 !important">Vendors</span>
+              </a>
+            </li>
+              <li runat="server" id="liMeasurements" visible="false">
+              <a href="MeasurementList.aspx">
+                <i class="material-icons text-yellow">straighten</i>
+
+                <span style="color:#FFFF00 !important">Measurements</span>
+              </a>
+            </li>
+            <hr runat="server" id="hrSubstrate" visible="true" style="background:#ffffff !important"/>
+
+                <!--SuperUser Login-->
+                    <%--<% if (Session["SuperUser"].ToString() == "True")
+                        {%>--%>
+            <li runat="server" id="liAdminUsers" visible="false">
+              <a href="Administrator.aspx">
+                <i class="material-icons text-warning">assessment</i>
+                <span style="color:#f6c333 !important">Admin Users</span>
+              </a>
+            </li>
+              
+               
+               <li runat="server" id="liDatabaseMaintainence" visible="false">
+              <a href="MaterialsList.aspx">
+                <i class="material-icons text-warning">collections_bookmark</i>
+                <span style="color:#f6c333 !important">Database Maintenance</span>
+              </a>
+            </li>
+
+               <li runat="server" id="liAdminLog" visible="false">
+              <a href="AdminLog.aspx">
+                <i class="material-icons text-warning">add_to_queue</i>
+                <span style="color:#f6c333 !important">Admin Logs</span>
+              </a>
+            </li>
+              
+              <%-- <%}%>--%>
+          </ul>
+        </nav>
+		</div>
+      <!-- /sidebar panel -->
+
+      <!-- content panel -->
+      <div class="main-panel">
+        <!-- top header -->
+        <nav class="header navbar">
+          <div class="header-inner">
+            <div class="navbar-item navbar-spacer-right brand hidden-lg-up">
+              <!-- toggle offscreen menu -->
+              <a href="javascript:;" data-toggle="sidebar" class="toggle-offscreen">
+                <i class="material-icons">menu</i>
+              </a>
+              <!-- /toggle offscreen menu -->
+              <!-- logo -->
+              <%--<a class="brand-logo hidden-xs-down">
+                <img src="images/logo_white.png" alt="logo"/>
+              </a>--%>
+              <!-- /logo -->
+            </div>
+            <a class="navbar-item navbar-spacer-right navbar-heading hidden-md-down" href="#">
+              <span>Admin</span>
+            </a>
+           
+             <div class="navbar-item nav navbar-nav">
+                 <div class="nav-item nav-link dropdown">
+                     <a href="javascript:;" class="dropdown-toggle mr-40" data-toggle="dropdown">
+                         <span id="lnkAdministrator" style="font-size: 1rem;font-weight: 500;" runat="server" ></span>
+                     </a>
+                 </div>
+                 <div class="nav-item nav-link dropdown">
+                     <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                         <i class="material-icons">notifications</i> <span id="lnkCount" style="width: 17px;height: 17px;" class="tag tag-danger" runat="server" ></span>
+                     </a>
+                     <div class="dropdown-menu dropdown-menu-right notifications">
+                         <div class="dropdown-item"><div class="notifications-wrapper">
+                             
+                             <ul class="notifications-list">
+                                <asp:Repeater runat="server" ID="rptNotification" >
+                                <ItemTemplate>
+                                 <li><asp:LinkButton runat="server" class="itemcenter" OnClick="btnUpdate_Click" CommandName="Update" CommandArgument='<%#Eval("NotificationID") + ";" +Eval("NotificationURL")%>' 
+ >
+                                     <div class="circle-icon bg-success text-white m-2">
+                                        <i class="material-icons">arrow_upward</i></div>
+                                     <%# Eval("NotificationText") %>
+                                     </asp:LinkButton>
+                                 </li>
+                                </ItemTemplate>
+                                </asp:Repeater>
+                             </ul>
+                     
+                         </div>
+                            <div class="notification-footer">Notifications</div>
+                         </div></div>
+
+                 </div>
+             </div>
+          </div>
+        </nav>
+        <!-- /top header -->
+
+        <!-- main area -->
+        <div class="main-content maincontent-view">
+          <div class="content-view">
+              <%-- <ol class="breadcrumb">--%>
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server" >
+               <%-- <li class="breadcrumb-item">
+                            <a href="#">Admin Tool</a>
+                        </li>
+                        <li class="breadcrumb-item active">Clients</li>--%>
+            </asp:ContentPlaceHolder>
+                <%-- </ol>--%>
+              <asp:ContentPlaceHolder ID="ContentPlaceHolder2" runat="server" ></asp:ContentPlaceHolder>
+          </div>
+          <!-- bottom footer -->
+          <div ID="ContentFooter" class="content-footer">
+            <nav class="footer-right">
+              <%--<ul class="nav">
+                <li>
+                  <a href="javascript:;">Feedback</a>
+                </li>
+              </ul>--%>
+            </nav>
+            <nav class="footer-left">
+              <ul class="nav fixed-bottom bg-primary text-center">
+                <li>
+                <a target="_blank" href="https://www.usgfla.com">
+
+                    <span>Copyright</span>
+                    &copy; 2001 - <%=DateTime.Now.Year %> by Universal Screen Graphics, Inc.
+                  </a>
+                </li>
+                <li class="hidden-md-down">
+                  <a target="_blank" href="https://www.usgfla.com/Privacy">Privacy</a>
+                </li>
+                <li class="hidden-md-down">
+                  <a target="_blank" href="https://www.usgfla.com/Terms">Terms</a>
+                </li>
+                <li class="hidden-md-down">
+                  <a target="_blank" href="https://www.usgfla.com/Contact-Us">Help</a>
+                </li>
+              </ul>
+            </nav>
+            
+          </div>
+          <!-- /bottom footer -->
+        </div>
+        <!-- /main area -->
+      </div>
+      <!-- /content panel -->
+        <!-- Logout Modal-->
+       
+            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title"  id="exampleModalLabel">Ready to Leave?</h5>
+                            <button  class="close" type="button" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">×</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                        <div class="modal-footer">
+                            <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                            <asp:LinkButton runat="server" ID="lnkLogout" CssClass="btn btn-primary" Text="Logout" OnClick="lnkLogout_Click"></asp:LinkButton>
+                        </div>
+                    </div>
+                </div>
+            </div>
+           
+    </div>
+      
+       </form>
+    <script type="text/javascript">
+      window.paceOptions = {
+        document: true,
+        eventLag: true,
+        restartOnPushState: true,
+        restartOnRequestAfter: true,
+        ajax: {
+          trackMethods: [ 'POST','GET']
+        }
+      };
+    </script>
+
+   <script src="../vendor/jquery/jquery.min.js"></script>
+    <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- Core plugin JavaScript-->
+    <script src="../vendor/jquery-easing/jquery.easing.min.js"></script>
+    <!-- Page level plugin JavaScript-->
+    <script src="../vendor/chart.js/Chart.min.js"></script>
+
+     
+    <script src="../Vendor/datatables/admin_datatables.js"></script>
+    <!--<script src="../vendor/datatables/jquery.dataTables.js"></script>-->
+    <script src="../js/moment.min.js"></script>
+    <script src="../js/datetime-moment.js"></script>
+    <script src="../vendor/datatables/dataTables.bootstrap4.js"></script>
+    <!-- Custom scripts for all pages-->
+    <script src="../js/sb-admin.min.js"></script>
+    <!-- Custom scripts for this page-->
+    <script src="../js/sb-admin-datatables.js"></script>
+
+      <!---------------------------------------MilesStone Scripts---------------------------------------->
+
+    <!-- build:js({.tmp,app}) scripts/app.min.js -->
+    <%--<script src="../Milestone/vendor/jquery/dist/jquery.js"></script>--%>
+    <script src="../Milestone/vendor/pace/pace.js"></script>
+    <script src="../Milestone/vendor/tether/dist/js/tether.js"></script>
+    <script src="../Milestone/vendor/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="../Milestone/vendor/fastclick/lib/fastclick.js"></script>
+    <script src="../Milestone/scripts/constants.js"></script>
+    <script src="../Milestone/scripts/main.js"></script>
+    <!-- endbuild -->
+      <asp:ContentPlaceHolder ID="ContentPlaceHolder3" runat="server"></asp:ContentPlaceHolder>
+  </body>
+</html>

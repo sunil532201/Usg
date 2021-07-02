@@ -1,0 +1,322 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="ClientPage.master.cs" Inherits="USGClient.MasterPages.ClientPage" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title>Client Portal</title>
+
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    
+    <script src='<%=System.Configuration.ConfigurationManager.AppSettings["BaseURL"] %>Resources/libraries/jQuery/03_02_01/jquery.js?cdv=347' type="text/javascript"></script>
+	<script src='<%=System.Configuration.ConfigurationManager.AppSettings["BaseURL"] %>Resources/libraries/jQuery-Migrate/03_00_00/jquery-migrate.js?cdv=347' type="text/javascript"></script>
+	<script src='<%=System.Configuration.ConfigurationManager.AppSettings["BaseURL"] %>Resources/libraries/jQuery-UI/01_12_01/jquery-ui.js?cdv=347' type="text/javascript"></script>
+
+
+    <!------------------------------ MileStone stylesheets Begins---------------------->
+    <!-- page stylesheets -->
+    <link rel="stylesheet" href="../Milestone/vendor/bower-jvectormap/jquery-jvectormap-1.2.2.css"/>
+    <link rel="stylesheet" href="../Milestone/vendor/bootstrap/dist/css/bootstrap.css"/>
+    <link rel="stylesheet" href="../Milestone/vendor/pace/themes/blue/pace-theme-minimal.css"/>
+    <link rel="stylesheet" href="../Milestone/vendor/font-awesome/css/font-awesome.css"/>
+    <link rel="stylesheet" href="../Milestone/vendor/animate.css/animate.css"/>
+    <link rel="stylesheet" href="../Milestone/styles/app.css" id="load_styles_before"/>
+    <link rel="stylesheet" href="../Milestone/styles/app.skins.css"/>
+    <link href="../css/USG-CustomStyles.css" rel="stylesheet" />
+    <link href="../css/styleOverides.css" rel="stylesheet" />
+    <!-- endbuild -->
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+     <form runat="server">
+
+    <div class="app fixed-header expanding">
+      <!--sidebar panel-->
+      <div class="off-canvas-overlay" data-toggle="sidebar"></div>
+      <div class="sidebar-panel bg-dark">
+        <div class="brand bg-dark">
+          <!-- toggle offscreen menu -->
+          <a href="javascript:;" data-toggle="sidebar" class="toggle-offscreen hidden-lg-up">
+            <i class="material-icons">menu</i>
+          </a>
+          <!-- /toggle offscreen menu -->
+          <!-- logo -->
+          <a class="brand-logo">
+            <img class="expanding-hidden" src="../Milestone/images/UsgLogo.png" alt=""/>
+          </a>
+          <!-- /logo -->
+        </div>
+        <div class="nav-profile dropdown">
+          <a href="javascript:;" class="dropdown-toggle text-white" data-toggle="dropdown"><div class="user-image">
+              <img class="avatar img-circle clientLogo" id="logo" runat="server" alt="user" title="user" src="../Milestone/images/avatar.jpg"/>
+            </div><div class="user-info expanding-hidden"><span id="selectedClient" runat="server"></span><span id="admin" runat="server"></span></div></a>
+          <div class="dropdown-menu">
+            <a  class="dropdown-item" runat="server"   OnClick="ChangePassword" >Change Password</a>
+            <a  class="dropdown-item" data-toggle="modal" data-target="#exampleModal" href="javascript:;">Logout</a>
+          </div>
+        </div>
+        <!-- main navigation -->
+        <nav>
+          <ul class="nav">
+   <li>
+              <a href='javascript:;'>
+                <span class="menu-caret arrow-color text-primary">
+                  <i class="material-icons">arrow_drop_down</i>
+                </span>
+                <i class="material-icons text-primary">home</i><span class="text-primary">Website</span>
+              </a>
+         <ul class="sub-menu">
+            <li>
+                  <a href='javascript:;'>
+                    <span class="menu-caret arrow-color text-primary">
+                      <i class="material-icons">arrow_drop_down</i></span><span class="text-primary">Home</span>
+                  </a>
+               <ul class="sub-menu">
+                    <li>
+                      <a href="<%=System.Configuration.ConfigurationManager.AppSettings["BaseURL"] %>Home/About-USG" >
+                        <span class="text-primary">About USG</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href='<%=System.Configuration.ConfigurationManager.AppSettings["BaseURL"] %>Home/Design-Services'>
+                        <span class="text-primary">Design Services</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href='<%=System.Configuration.ConfigurationManager.AppSettings["BaseURL"] %>Home/Customer-Service'>
+                        <span class="text-primary">Customer Service</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href='<%=System.Configuration.ConfigurationManager.AppSettings["BaseURL"] %>Home/Printing'>
+                        <span class="text-primary">Printing</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href='<%=System.Configuration.ConfigurationManager.AppSettings["BaseURL"] %>Home/Store-Level-Shipping'>
+                        <span class="text-primary">Store Level Shipping</span>
+                      </a>
+                    </li>
+				</ul>
+			</li>
+             <li>
+                  <a href='<%=System.Configuration.ConfigurationManager.AppSettings["BaseURL"] %>Gallery'>
+                    <span class="text-primary">Gallery</span>
+                  </a>
+                </li>
+                <li>
+                  <a href='<%=System.Configuration.ConfigurationManager.AppSettings["BaseURL"] %>Team'>
+                    <span class="text-primary">Team</span>
+                  </a>
+                </li>
+              <li>
+                  <a href='<%=System.Configuration.ConfigurationManager.AppSettings["BaseURL"] %>Request-A-Quote'>
+                    <span class="text-primary">Request A Quote</span>
+                  </a>
+                </li>
+              <li>
+                  <a href='<%=System.Configuration.ConfigurationManager.AppSettings["BaseURL"] %>Contact-Us'>
+                    <span class="text-primary">Contact Us</span>
+                  </a>
+                </li>
+             <%-- <li>
+                  <a href='<%=System.Configuration.ConfigurationManager.AppSettings["BaseURL"] %>Client-Resources/FTP'>
+                    <span class="text-primary">FTP</span>
+                  </a>
+                </li>--%>
+		</ul>
+	</li>
+            <li runat="server" id="liApproval" visible="false">
+              <a href="Default.aspx">
+                <i class="material-icons text-success">people</i><span class="li-ApprovalSystem">Approval System</span>
+              </a>
+            </li>
+            <li runat="server" id="liOrder" visible="false">
+              <a href="Order.aspx">
+                <i class="material-icons text-warning">assessment</i><span  class="li-StoreOrdering" >Management Ordering</span>
+              </a>
+            </li>
+               <li runat="server" id="liStoreOrder" visible="false">
+              <a href="Order.aspx">
+                <i class="material-icons text-warning">assessment</i><span  class="li-StoreOrdering" >Store Level Ordering</span>
+              </a>
+            </li>
+               <li runat="server" id="liFiletransfer" visible="false">
+              <a href="FileTransfer.aspx">
+                <i class="material-icons text-info">explore</i><span class="li-FileTransfer">File Transfer</span>
+              </a>
+            </li>
+                <li runat="server" id="liManager" visible="false">
+              <a href="ManagerView.aspx">
+                <i class="material-icons text-success">local_library</i><span class="li-ManageOrders">Manage Orders</span>
+              </a>
+            </li>
+              <li runat="server" id="liInvoices" visible="false">
+              <a href="Invoices.aspx">
+                <i class="material-icons text-warning">local_library</i><span class="li-Invoices">Invoices</span>
+              </a>
+             </li>
+            <li runat="server" id="liRequest" visible="false    ">
+              <a href="RequestQuote.aspx">
+                <i class="material-icons text-yellow">local_library</i><span style="color:#FFFF00 !important" class="li-Invoices">Request a Quote</span>
+              </a>
+             </li>
+            <li runat="server" id="liInventory" visible="false">
+              <a href="CurrentInventory.aspx">
+                <i class="material-icons text-yellow">local_play</i><span style="color:#FFFF00 !important" class="li-Invoices">Inventory</span>
+              </a>
+             </li>
+              <%-- <%}%>--%>
+          </ul>
+        </nav>
+		</div>
+      <!-- /sidebar panel -->
+
+      <!-- content panel -->
+      <div class="main-panel">
+        <!-- top header -->
+          
+        <nav class="header navbar">
+          <div class="header-inner">
+            <div class="navbar-item navbar-spacer-right brand hidden-lg-up">
+              <!-- toggle offscreen menu -->
+              <a href="javascript:;" data-toggle="sidebar" class="toggle-offscreen">
+                <i class="material-icons">menu</i>
+              </a>
+              <!-- /toggle offscreen menu -->
+              <!-- logo -->
+              <%--<a class="brand-logo hidden-xs-down">
+                <img src="../Milestone/images/UsgLogo.png" alt="logo"/>
+              </a>--%>
+              <!-- /logo -->
+            </div>
+            <a class="navbar-item navbar-spacer-right navbar-heading hidden-md-down" href="#">
+                <asp:ContentPlaceHolder runat="server" ID="cphPageTitle">
+              <span>Admin</span>
+               </asp:ContentPlaceHolder>
+            </a>
+           
+              <div class="navbar-item nav navbar-nav">
+              <div class="nav-item nav-link dropdown">
+                <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown">
+                   <span id="lnkAdministrator" style="font-size: 1rem;font-weight: 500;" runat="server" ></span>
+                </a>
+               
+              </div>
+                  </div>
+          </div>
+        </nav>
+        <!-- /top header -->
+
+        <!-- main area -->
+        <div class="main-content maincontent-view" >
+          <div class="content-view">
+               <%--<ol class="breadcrumb" >--%>
+            <asp:ContentPlaceHolder ID="cphBreadCrumbs" runat="server" >
+            </asp:ContentPlaceHolder>
+                 <%--</ol>--%>
+              <asp:ContentPlaceHolder ID="cphMainContent" runat="server" ></asp:ContentPlaceHolder>
+          </div>
+          <!-- bottom footer -->
+          <div ID="ContentFooter" class="content-footer">
+            <nav class="footer-right">
+<%--              <ul class="nav">
+                <li>
+                  <a href="javascript:;">Feedback</a>
+                </li>
+              </ul>--%>
+            </nav>
+            <nav class="footer-left">
+              <ul class="nav fixed-bottom bg-primary text-center">
+                <li>
+                  <a target="_blank" href="https://www.usgfla.com">
+                    <span>Copyright</span>
+                    &copy; 2001 - <%=DateTime.Now.Year %> by Universal Screen Graphics, Inc.
+                  </a>                 
+                </li>
+                <li class="hidden-md-down">
+                  <a target="_blank" href="https://www.usgfla.com/Privacy">Privacy</a>
+                </li>
+                <li class="hidden-md-down">
+                  <a target="_blank" href="https://www.usgfla.com/Terms">Terms</a>
+                </li>
+                <li class="hidden-md-down">
+                  <a target="_blank" href="https://www.usgfla.com/Contact-Us">Help</a>
+                </li>
+              </ul>
+            </nav>
+            
+          </div>
+          <!-- /bottom footer -->
+        </div>
+        <!-- /main area -->
+      </div>
+      <!-- /content panel -->
+        <!-- Logout Modal-->
+       
+            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title"  id="exampleModalLabel">Ready to Leave?</h5>
+                            <button  class="close" type="button" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">×</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                        <div class="modal-footer">
+                            <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                            <asp:LinkButton runat="server" ID="lnkLogout" CssClass="btn btn-primary" Text="Logout" OnClick="lnkLogout_Click"></asp:LinkButton>
+                        </div>
+                    </div>
+                </div>
+            </div>
+           
+    </div>
+      
+       </form>
+     <script type="text/javascript">
+      window.paceOptions = {
+        document: true,
+        eventLag: true,
+        restartOnPushState: true,
+        restartOnRequestAfter: true,
+        ajax: {
+          trackMethods: [ 'POST','GET']
+        }
+      };
+    </script>
+   <%-- <script>
+    function showpreview(input) {
+            debugger
+            $('#pickImg').hide();
+        }
+      </script>--%>
+    <script type="text/javascript">
+			jQuery('#login').find('a').removeAttr('onclick'); 
+			jQuery('#login').children('a').removeAttr('onclick');
+		</script>
+<%-- <script src="http://code.jquery.com/jquery-1.10.2.min.js" type="text/javascript"></script>
+<script src="https://cdn.datatables.net/1.10.4/js/jquery.dataTables.min.js"></script>--%>
+ <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
+
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.4/css/jquery.dataTables.min.css">
+
+    <!---------------------------------------MilesStone Scripts---------------------------------------->
+    <script src="../Milestone/vendor/pace/pace.js"></script>
+    <script src="../Milestone/vendor/tether/dist/js/tether.js"></script>
+    <script src="../Milestone/vendor/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="../Milestone/vendor/fastclick/lib/fastclick.js"></script>
+    <script src="../Milestone/scripts/constants.js"></script>
+    <script src="../Milestone/scripts/main.js"></script>
+
+    <%--<script src="../js/USGInnerOverride.js"></script>--%>
+    <!-- endbuild -->
+      <asp:ContentPlaceHolder ID="cphFooter" runat="server"></asp:ContentPlaceHolder>
+</body>
+</html>
